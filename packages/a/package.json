@@ -1,0 +1,20 @@
+{
+  "name": "a",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/frederikprijck/release-please-test#readme",
+  "bugs": {
+    "url": "https://github.com/frederikprijck/release-please-test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frederikprijck/release-please-test.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  }
+}

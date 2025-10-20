@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+      - beta
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          # This token is required to create the Release PR
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          # This is the magic: it creates the tag and GitHub Release
+          # ONLY after the 'Release PR' is merged.
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          target-branch: ${{ github.ref_name }}
+  publish:
+    needs: release
+    if: ${{ needs.release.outputs.releases_created }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Dependencies
+        run: npm run build
+
+      - name: Publish to NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Pass the released paths from the previous step
+          PATHS_RELEASED: ${{ steps.release.outputs.paths_released }}
+          # Determine the NPM tag: 'beta' for beta branch, 'latest' for main
+          NPM_TAG: ${{ github.ref_name == 'beta' && 'beta' || 'latest' }}
+        run: |
+          echo "Releasing to tag: $NPM_TAG"
+          
+          echo "$PATHS_RELEASED" | jq -r '.[]' | while read -r path; do
+            echo "Publishing $path..."
+          done
