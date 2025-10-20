@@ -1,0 +1,17 @@
+{
+  "packages": {
+    "packages/a": {
+      "release-type": "node",
+      "package-name": "a"
+    },
+    "packages/b": {
+      "release-type": "node",
+      "package-name": "b"
+    },
+    "packages/c": {
+      "release-type": "node",
+      "package-name": "c"
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
