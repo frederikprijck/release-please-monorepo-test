@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2025-12-15)
+
+
+### Features
+
+* **a:** add new feature log to package A ([8f3b6fb](https://github.com/frederikprijck/release-please-monorepo-test/commit/8f3b6fbd1f4dcb9f4a3c4c16bad70ab9cd9e24a2))
+
 ## [2.0.0](https://github.com/frederikprijck/release-please-test/compare/v1.1.0...v2.0.0) (2025-10-20)
 
 
