@@ -25,6 +25,7 @@ jobs:
           release-type: node # Default: 'simple' is a good start
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+          target-branch: ${{ github.ref_name }}
   publish:
     needs: release
     if: ${{ needs.release.outputs.releases_created }}
