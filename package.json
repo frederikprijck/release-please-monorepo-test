@@ -1,6 +1,6 @@
 {
   "name": "release-please-test",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "",
   "workspaces": [
     "packages/*"
@@ -20,7 +20,6 @@
   "scripts": {
     "build": "turbo run build"
   },
-
   "packageManager": "npm@10.1.0",
   "devDependencies": {
     "turbo": "^2.6.3"
