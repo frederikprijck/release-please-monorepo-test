@@ -20,9 +20,9 @@
   "scripts": {
     "build": "turbo run build"
   },
-
   "packageManager": "npm@10.1.0",
   "devDependencies": {
     "turbo": "^2.6.3"
-  }
+  },
+  "version": "1.0.0"
 }
