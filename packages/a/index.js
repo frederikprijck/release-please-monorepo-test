@@ -1,3 +1,4 @@
 console.log('This is package A');
 console.log('This is a fix for package A');
 console.log('This is a new feature for package A');
+console.log('This is another new feature for package A');
